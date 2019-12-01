@@ -1,17 +1,14 @@
+require 'singleton'
+
 class Logger
+  include Singleton
+
   def initialize
-    @f = File.open('log.txt', 'a')
-  end
-
-  @@x = Logger.new
-
-  def self.instance
-    @@x
+    @file = File.open('log.txt', 'a')
   end
 
   def log_something(wat)
-    @f.puts wat
+    @file.puts wat
+    @file.flush
   end
-
-  private_class_method :new
 end
