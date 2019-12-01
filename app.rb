@@ -6,11 +6,9 @@ class Logger
   @@x = nil
   
   def self.instance
-    if @@x == nil
-      @@x = Logger.new
-    end
+    @@x = Logger.new if @@x.nil?
 
-    return @@x
+    @@x
   end
 
   def self.say_something
@@ -18,9 +16,7 @@ class Logger
   end
 
   def log_something(wat)
-    #f = File.open('log.txt', 'a')
     @f.puts wat
-    #f.close
   end
 end
 
